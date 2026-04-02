@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run package
+
+      - name: Update release tag with dist
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Force-add dist/ even though it is in .gitignore
+          git add -f dist/
+          git commit -m "Build dist for ${TAG}"
+
+          # Force-update the release tag to include the built dist
+          git tag -fa "${TAG}" -m "${TAG}"
+          git push --force origin "${TAG}"
+
+          # Update the major version tag (e.g., v1.2.3 -> v1)
+          MAJOR=$(echo "${TAG}" | grep -oP '^v\d+')
+          if [ -n "${MAJOR}" ]; then
+            git tag -fa "${MAJOR}" -m "${MAJOR}"
+            git push --force origin "${MAJOR}"
+          fi
