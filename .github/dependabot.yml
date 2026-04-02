@@ -12,8 +12,8 @@ updates:
     groups:
       typescript-eslint:
         patterns:
-          - "@typescript-eslint/*"
+          - '@typescript-eslint/*'
       rollup:
         patterns:
-          - "rollup"
-          - "@rollup/*"
+          - 'rollup'
+          - '@rollup/*'
