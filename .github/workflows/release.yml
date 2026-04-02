@@ -45,7 +45,7 @@ jobs:
           git push --force origin "${TAG}"
 
           # Update the major version tag (e.g., v1.2.3 -> v1)
-          MAJOR=$(echo "${TAG}" | grep -oP '^v\d+')
+          MAJOR=$(echo "${TAG}" | sed -n 's/^\(v[0-9]\+\).*/\1/p')
           if [ -n "${MAJOR}" ]; then
             git tag -fa "${MAJOR}" -m "${MAJOR}"
             git push --force origin "${MAJOR}"
