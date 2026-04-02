@@ -4,7 +4,8 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "."
   },
   "exclude": [
     "__fixtures__",
