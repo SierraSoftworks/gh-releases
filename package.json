@@ -54,7 +54,7 @@
     "globals": "^17.7.0",
     "jest": "^30.4.2",
     "js-yaml": "^5.2.1",
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.5",
     "prettier-eslint": "^17.1.1",
     "rollup": "^4.62.2",
     "ts-jest": "^29.4.11",
