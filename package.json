@@ -37,7 +37,7 @@
     "@actions/github": "^9.1.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/eslintrc": "^3.3.6",
     "@eslint/js": "^10.0.1",
     "@jest/globals": "^30.4.1",
     "@rollup/plugin-commonjs": "^29.0.3",
