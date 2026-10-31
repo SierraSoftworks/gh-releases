@@ -1,7 +1,7 @@
 name: Publish GitHub Release Artifacts
-description: |
-  This action uploads GitHub Actions build artifacts to a GitHub Release,
-  optionally creating and publishing the release (compatible with immutable releases).
+description:
+  Upload build artifacts to a GitHub Release, optionally creating and publishing
+  it (supports immutable releases).
 author: Sierra Softworks
 inputs:
   files:
