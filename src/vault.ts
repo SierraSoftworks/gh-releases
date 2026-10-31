@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import { FileSpec } from './parser'
+import { FileSpec } from './parser.js'
 import { createHash, Hash } from 'crypto'
 import { readFile } from 'fs/promises'
 import { request } from 'https'
